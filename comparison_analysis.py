@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Load the CSV file
+# Load CSV file
 file_path = "planets.csv"
 data = pd.read_csv(file_path)
 
@@ -27,7 +27,7 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
-# Scatter plot: Mean Temperature vs. Distance from Sun
+# Scatter plot - Mean Temperature vs. Distance from Sun
 plt.figure(figsize=(10, 6))
 plt.scatter(data['distance_from_sun'], data['mean_temperature'], color='skyblue', edgecolors='black')
 for i, planet in enumerate(data['planet']):
@@ -38,7 +38,7 @@ plt.title('Mean Temperature vs. Distance from Sun')
 plt.grid(True, linestyle='--', alpha=0.7)
 plt.show()
 
-# Bar Chart: Comparison of Length of Days wrt Earth
+# Bar Chart - Comparison of Length of Days wrt Earth
 # Extract planet names and length_of_day values
 planet_names = data['planet'].tolist()
 day_lengths_hours = data['length_of_day'].tolist()
