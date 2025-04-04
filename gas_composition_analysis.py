@@ -2,14 +2,14 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-# Load the dataset
+# Load CSV file
 file_path = "gas_composition.csv"
 df = pd.read_csv(file_path)
 
-# Exclude the Sun, focusing on planets and moons
+# Exclude the Sun
 bodies = df[df["Object"] != "Sun"]
 
-# Define consistent colors for each gas - this ensures the same gas has the same color in all charts
+# Defining colors for each gas
 color_mapping = {
     'Carbon Dioxide': '#8884d8',
     'Nitrogen': '#83a6ed',
@@ -22,7 +22,7 @@ color_mapping = {
     'Other': '#ff6361'
 }
 
-# Create a separate figure for each body
+# Plotting
 for idx, body in bodies.iterrows():
     body_name = body['Object']
     
@@ -36,8 +36,7 @@ for idx, body in bodies.iterrows():
     if len(gas_data) == 0:
         print(f"No atmosphere data for {body_name}")
         continue
-    
-    # Create a new figure for this body
+
     plt.figure(figsize=(8, 6))
     
     # Get colors for this body's gases
@@ -53,10 +52,7 @@ for idx, body in bodies.iterrows():
         colors=colors_for_body
     )
     
-    # Set title
     plt.title(f"{body_name}'s Atmospheric Composition")
-    
-    # Set figure name
     plt.tight_layout()
     plt.savefig(f"{body_name}_atmosphere.png")
     plt.close()
